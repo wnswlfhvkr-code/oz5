@@ -1,0 +1,26 @@
+.last {
+    margin-top: 100px;
+    font-size: 10px;
+}
+
+#github {
+    font-size: smaller;
+    color: #135769;
+    text-decoration: none;
+}
+
+#github:hover {
+    color: blueviolet;
+    text-decoration: underline;
+    font-size: large;
+
+}
+
+.info {
+    font-size:smaller;
+    margin-left: 30px;
+}
+
+.info li:hover {
+    font-size: 50px;
+}
