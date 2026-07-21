@@ -1,70 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>자기소개서</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>박준영 - 자기소개서</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 커스텀 스타일 (Carousel 커스텀 스타일 포함) -->
+    <style>
+      /* Global Layout & Padding */
+      body {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        color: rgb(var(--bs-tertiary-color-rgb));
+      }
+
+      /* Carousel Custom Styling */
+      .carousel {
+        margin-bottom: 4rem;
+      }
+      .carousel-caption {
+        bottom: 3rem;
+        z-index: 10;
+      }
+      .carousel-item {
+        height: 32rem;
+        background-color: #6c757d;
+      }
+      .carousel-item > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        height: 32rem;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+
+      /* Marketing Columns */
+      .marketing .col-lg-4 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .marketing .col-lg-4 p {
+        margin-right: .75rem;
+        margin-left: .75rem;
+      }
+
+      /* Featurettes Divider */
+      .featurette-divider {
+        margin: 5rem 0;
+      }
+      .featurette-heading {
+        letter-spacing: -.05rem;
+      }
+
+      /* Profile Avatar Image Custom Style */
+      .profile-img-circle {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+    </style>
 </head>
 <body>
-  <h1>Self Introduction.</h1>
-  <hr>
-  <img src="https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png" alt="Profile Picture" style="width: 200px; height: 200px;">
-  <p>나는 <mark>박준영</mark>입니다. 너희들은 나에 대해서 한번쯤은 들어봤을 것.</p>
-  <a id='github' href="https://github.com/wnswlfhvkr-code/oz5">깃 허브</a>
-  <ul class="info" style="list-style: square">
-      <li>이름: 박준영</li>
-      <li>나이: 28살</li>
-      <li>출생년도: 1999년</li>
-      <li>성별: 남자</li>
-      <li>거주지: 안산시</li>
-  </ul>
-  <h1>Hobby & Preference</h1>
-  <hr>
-  <ol type="i">
-    <li>취미: 독서</li>
-    <li>좋아하는 음식: 핒아</li>
-    <li>좋아하는 영화: 테넷</li>
-    <li>좋아하는 책: 박준영전</li>
-    <li>좋아하는 노래 장르: 재즈</li>
-  </ol>
-  <h2>Career & Work Experience</h2>
-  <hr>
-  <table style="table-layout: auto" border="1">
-    <thead>
-      <tr>
-        <th>회사명</th>
-        <th>직무</th>
-        <th>기간</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>우성요양병원</td>
-        <td>물리치료사</td>
-        <td>2021~2024</td>
-      </tr>
-      <tr>
-        <td>단원병원</td>
-        <td>물리치료사</td>
-        <td>2024~2026</td>
-      </tr>
-      <tr>
-        <td>오즈코딩스쿨</td>
-        <td>ai헬스케어과정</td>
-        <td>2026~</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="last">
-    <h1>Send Cover Letter</h1>
-    <hr>
-    <form action="" style="display: flex; gap: 10px;">
-      <label for="emailInput">담당자 이메일: </label>
-      <input id="emailInput" type="email" placeholder="email@example.com">
-      <label for="companyInput">회사명: </label>
-      <input id="companyInput" type="text" placeholder="(주)Paper Company">
-      <button>이력서 전송하기</button>
-    </form>
-  </div>
+
+  <!-- Navigation Bar -->
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">박준영 Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#intro">소개</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#hobby">취미 & 선호</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#career">경력 사항</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">전송하기</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Carousel 히어로 섹션 -->
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- 슬라이드 1 -->
+        <div class="carousel-item active bg-primary text-white">
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1 class="display-4 fw-bold">Hello, I'm Park Junyoung</h1>
+              <p class="opacity-75 fs-5">나는 <mark class="bg-warning text-dark px-2 rounded">박준영</mark>입니다. 너희들은 나에 대해서 한번쯤은 들어봤을 것.</p>
+              <p><a id="github" class="btn btn-lg btn-light fw-bold" href="https://github.com/wnswlfhvkr-code/oz5" target="_blank">깃 허브 방문하기</a></p>
+            </div>
+          </div>
+        </div>
+        <!-- 슬라이드 2 -->
+        <div class="carousel-item bg-dark text-white">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="display-4 fw-bold">Hobby & Preference</h1>
+              <p class="fs-5">독서와 좋은 음악, 테넷 영화를 즐기는 신짱구 스타일의 개성 넘치는 개발자!</p>
+              <p><a class="btn btn-lg btn-info text-white" href="#hobby">자세히 보기</a></p>
+            </div>
+          </div>
+        </div>
+        <!-- 슬라이드 3 -->
+        <div class="carousel-item bg-success text-white">
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1 class="display-4 fw-bold">Career & Experience</h1>
+              <p class="fs-5">물리치료사 출신의 준비된 AI 헬스케어 서비스 전문가</p>
+              <p><a class="btn btn-lg btn-warning text-dark fw-bold" href="#career">경력표 확인</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="0" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Marketing 3개의 아이콘/컬럼 섹션 -->
+    <div class="container marketing">
+      <div class="row text-center">
+        <div class="col-lg-4">
+          <img src="https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png" class="profile-img-circle mb-3" alt="Profile Picture">
+          <h2 class="fw-normal">Self Intro</h2>
+          <p>안산에 거주하는 28살(1999년생) 남자 박준영입니다.</p>
+          <p><a class="btn btn-secondary" href="#intro">상세 보기 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            <div class="rounded-circle bg-warning d-flex justify-content-center align-items-center" style="width: 140px; height: 140px; font-size: 3rem;">
+              🍕
+            </div>
+          </div>
+          <h2 class="fw-normal">Hobby</h2>
+          <p>피자와 인디, 재즈 음악을 사랑합니다.</p>
+          <p><a class="btn btn-secondary" href="#hobby">상세 보기 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center" style="width: 140px; height: 140px; font-size: 3rem;">
+              🏥
+            </div>
+          </div>
+          <h2 class="fw-normal">Career</h2>
+          <p>우성요양병원, 단원병원 근무 및 오즈코딩스쿨 AI 헬스케어 과정 수료 중</p>
+          <p><a class="btn btn-secondary" href="#career">상세 보기 &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- Section 1: Intro -->
+      <div class="row featurette align-items-center" id="intro">
+        <div class="col-md-7">
+          <h2 class="featurette-heading fw-bold lh-1">Self Introduction. <span class="text-body-secondary">기본 정보</span></h2>
+          <p class="lead mt-3">나는 <mark>박준영</mark>입니다. 너희들은 나에 대해서 한번쯤은 들어봤을 것.</p>
+          <ul class="info list-group list-group-flush fs-5 mt-3" style="max-width: 400px;">
+            <li class="list-group-item"><strong>이름:</strong> 박준영</li>
+            <li class="list-group-item"><strong>나이:</strong> 28살</li>
+            <li class="list-group-item"><strong>출생년도:</strong> 1999년</li>
+            <li class="list-group-item"><strong>성별:</strong> 남자</li>
+            <li class="list-group-item"><strong>거주지:</strong> 안산시</li>
+          </ul>
+        </div>
+        <div class="col-md-5 text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png" class="img-fluid rounded shadow-lg" alt="Profile Picture" style="max-height: 300px;">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- Section 2: Hobby -->
+      <div class="row featurette align-items-center" id="hobby">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading fw-bold lh-1">Hobby & Preference <span class="text-body-secondary">취미 및 선호</span></h2>
+          <p class="lead mt-3">저의 다양한 취미와 취향을 소개해 드립니다.</p>
+          <ol class="list-group list-group-numbered fs-5 mt-3" style="max-width: 450px;">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">취미</div>
+                독서
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">좋아하는 음식</div>
+                핒아
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">좋아하는 영화</div>
+                테넷
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">좋아하는 책</div>
+                박준영전
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">좋아하는 노래 장르</div>
+                재즈
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="col-md-5 order-md-1 text-center">
+          <div class="p-5 bg-light rounded-3 shadow-sm">
+            <span style="font-size: 5rem;">📚🎷🍕</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- Section 3: Career -->
+      <div class="row featurette align-items-center" id="career">
+        <div class="col-md-12">
+          <h2 class="featurette-heading fw-bold lh-1 mb-4">Career & Work Experience <span class="text-body-secondary">경력 및 경험</span></h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle shadow-sm">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">회사명</th>
+                  <th scope="col">직무</th>
+                  <th scope="col">기간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-bold">우성요양병원</td>
+                  <td>물리치료사</td>
+                  <td>2021~2024</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">단원병원</td>
+                  <td>물리치료사</td>
+                  <td>2024~2026</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold text-primary">오즈코딩스쿨</td>
+                  <td><span class="badge bg-primary">ai헬스케어과정</span></td>
+                  <td>2026~</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- Section 4: Send Cover Letter -->
+      <div class="row featurette" id="contact">
+        <div class="col-md-12">
+          <div class="p-4 p-md-5 rounded-4 bg-body-tertiary shadow-sm last">
+            <h1 class="fw-bold mb-3">Send Cover Letter</h1>
+            <p class="text-secondary mb-4">담당자 이메일과 회사명을 입력 후 이력서를 전송하세요.</p>
+            <form action="" class="row g-3 align-items-center">
+              <div class="col-md-5">
+                <label for="emailInput" class="form-label fw-bold">담당자 이메일</label>
+                <input id="emailInput" type="email" class="form-control form-control-lg" placeholder="email@example.com">
+              </div>
+              <div class="col-md-5">
+                <label for="companyInput" class="form-label fw-bold">회사명</label>
+                <input id="companyInput" type="text" class="form-control form-control-lg" placeholder="(주)Paper Company">
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">이력서 전송하기</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="container">
+      <p class="float-end"><a href="#">위로 올라가기</a></p>
+      <p>&copy; 2026 Park Junyoung &middot; <a href="https://github.com/wnswlfhvkr-code/oz5" target="_blank">GitHub</a></p>
+    </footer>
+  </main>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.css"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
